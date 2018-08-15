@@ -1,46 +1,49 @@
-<h1 align="center">
-    <img src="http://docs.cocorico.io/images/logo_cocorico.png" alt="Cocorico"/>
-</h1>
 
-# Cocorico
+[![Cocorico](http://docs.cocorico.io/images/logo_cocorico.png)](https://github.com/Cocolabs-SAS/cocorico)
+[![Docker](https://www.docker.com/sites/default/files/horizontal.png)](https://www.docker.com/)
 
-[![Try the demo](https://img.shields.io/badge/try-demo-green.svg)](http://demo.cocorico.io)
-[![Build Status](https://secure.travis-ci.org/Cocolabs-SAS/cocorico.svg)](http://travis-ci.org/Cocolabs-SAS/cocorico)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Latest Stable Version](https://poser.pugx.org/cocorico/cocorico/v/stable.svg)](https://packagist.org/packages/cocorico/cocorico)
+# Cocorico-Docker
 
-Cocorico is an open source platform sponsored by [Cocolabs](http://www.cocolabs.io) to create collaborative consumption marketplaces.
+[![Docker Stars](https://img.shields.io/docker/stars/cocolabs/cocorico.svg?style=flat-square)](https://hub.docker.com/r/cocolabs/cocorico/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/cocolabs/cocorico.svg?style=flat-square)](https://hub.docker.com/r/cocolabs/cocorico/)
+[![Docker Automated build](https://img.shields.io/docker/automated/cocolabs/cocorico.svg?style=flat-square)](https://hub.docker.com/r/cocolabs/cocorico/)
+[![Docker Build Status](https://img.shields.io/docker/build/cocolabs/cocorico.svg?style=flat-square)](https://hub.docker.com/r/cocolabs/cocorico/)
+[![License](https://img.shields.io/github/license/Cocolabs-SAS/cocorico-docker.svg?style=flat-square)](https://github.com/Cocolabs-SAS/cocorico-docker/blob/master/LICENSE)
 
-A demo is available at [http://demo.cocorico.io](http://demo.cocorico.io).
+The official [Cocorico docker image](https://hub.docker.com/r/cocolabs/cocorico/) that give you the ability to run Cocorico out of the box.
 
-## Documentation
+## Requirements
 
-Documentation is available [here](doc/index.md)
+- Linux OS
+- [Docker](https://docs.docker.com/install/)
+- [Docker Documentation](https://docs.docker.com/)
 
-## Contribute
+## Usage
 
-Anyone and everyone is welcome to contribute. Please take a moment to
-review the [guidelines for contributing](CONTRIBUTING.md).
+Start the container:
 
-* [Bug reports](CONTRIBUTING.md#bugs)
-* [Feature requests](CONTRIBUTING.md#features)
-* [Pull requests](CONTRIBUTING.md#pull-requests)
+``` bash
+docker run --name cocorico -ti -p 80:8000 -p 3306:3306 -p 9001:9001 -p 27017:27017  -v `pwd`:/cocorico -v `pwd`/tmp/mysql:/var/lib/mysql -v `pwd`/tmp/mongo:/data/db -e HOST_UID=$UID cocolabs/cocorico
+```
 
-The [ROADMAP](ROADMAP.md) list the planned features.
 
-## Changelog
+Follow the progress of the installation: [http://localhost:9001/logtail/cocorico](http://localhost:9001/logtail/cocorico)
 
-[CHANGELOG.md](CHANGELOG.md) list the relevant changes done for each release.
+Once the symfony server is running, enjoy Cocorico: [http://localhost](http://localhost)
 
-## Community
+Connect to the container:
 
-Stay informed on Cocorico developments on [Twitter](https://twitter.com/cocorico_rocks).
+``` bash
+docker exec -it --user cocorico cocorico /bin/sh
+```
+
+
+Stop the container:
+
+``` bash
+docker kill cocorico && docker rm cocorico
+```
 
 ## License
 
-Cocorico is released under the [MIT license](LICENSE).
-
-
-## About Us
-
-Cocorico is a creation of [Cocolabs](http://www.cocolabs.io) specialist of online services sales solutions.
+Cocorico-Docker is released under the [MIT license](https://github.com/Cocolabs-SAS/cocorico-docker/blob/master/LICENSE).

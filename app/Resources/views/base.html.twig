@@ -31,11 +31,11 @@
 
     {% block stylesheets %}
         {% stylesheets
-        'css/all.css'
-        'css/vendor/bootstrap-datetimepicker.css'
-        'css/vendor/bootstrap-multiselect.css'
-        'css/vendor/unslider.css'
-        'css/all-override.css'
+        'web/css/compiled/all.css'
+        'web/css/compiled//vendor/bootstrap-datetimepicker.css'
+        'web/css/compiled//vendor/bootstrap-multiselect.css'
+        'web/css/compiled//vendor/unslider.css'
+        'web/css/compiled//all-override.css'
 
         filter='cssrewrite, ?minifycsscompressor' output='css/compiled/all.css' %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all">
